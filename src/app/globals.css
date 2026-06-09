@@ -1,26 +1,158 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Define background and text colors */
+  --color-background: #09090b; /* Zinc 950 */
+  --color-foreground: #fafafa; /* Zinc 50 */
+  
+  /* Primary color: Emerald Green */
+  --color-primary-light: #34d399; /* emerald 400 */
+  --color-primary: #10b981; /* emerald 500 */
+  --color-primary-dark: #059669; /* emerald 600 */
+  --color-primary-glow: rgba(16, 185, 129, 0.15);
+  
+  /* Secondary / Pin Warning: Amber Gold */
+  --color-warning-light: #fbbf24; /* amber 400 */
+  --color-warning: #f59e0b; /* amber 500 */
+  --color-warning-dark: #d97706; /* amber 600 */
+  --color-warning-glow: rgba(245, 158, 11, 0.15);
+  
+  /* Danger / Delete: Red (safe from blue/purple shades) */
+  --color-danger-light: #f87171; /* red 400 */
+  --color-danger: #ef4444; /* red 500 */
+  --color-danger-dark: #dc2626; /* red 600 */
+  
+  /* Neutrals for Dark Theme */
+  --color-zinc-950: #09090b;
+  --color-zinc-900: #121214;
+  --color-zinc-800: #1c1c1f;
+  --color-zinc-700: #27272a;
+  --color-zinc-600: #3f3f46;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-100: #f4f4f5;
+
+  /* Font overrides */
+  --font-sans: var(--font-geist-sans), Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Custom Base Styles */
+html {
+  background-color: #09090b;
+  color: #fafafa;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at 50% 0%, #121214 0%, #09090b 100%);
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: rgba(16, 185, 129, 0.3);
+  color: #ffffff;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c1c1f;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #27272a;
+}
+
+/* Custom Glassmorphism Utility */
+.glass-panel {
+  background: rgba(18, 18, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(39, 39, 42, 0.5);
+}
+
+.glass-panel:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Glow Border Animations */
+.glow-emerald {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.glow-emerald:hover {
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+.glow-amber {
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.glow-amber:hover {
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
+  border-color: rgba(245, 158, 11, 0.7);
+}
+
+/* Micro-animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Custom Loading Spinner */
+.spinner {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border-left-color: #10b981;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
