@@ -42,7 +42,7 @@ export default async function DashboardPage() {
         <div className="glass-panel p-5 rounded-2xl w-full text-left font-mono text-xs text-zinc-400 flex flex-col gap-2.5 border border-zinc-800">
           <p className="font-bold text-zinc-300">Quick Setup Instructions:</p>
           <ol className="list-decimal pl-4 flex flex-col gap-1.5">
-            <li>Open the file [notes/.env.local](file:///c:/Users/Sameer/OneDrive/Desktop/Next-Notes/notes/.env.local)</li>
+            <li>Open the `.env.local` file in the root of the project</li>
             <li>Ensure `MONGODB_URI` points to a running instance (local or MongoDB Atlas)</li>
             <li>Restart your development server (`pnpm dev`)</li>
           </ol>
